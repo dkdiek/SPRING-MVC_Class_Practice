@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!--  MyBatis에서는 SQL 쿼리를 별도의 XML 파일에 정의하고,
+Java 코드에서는 인터페이스를 통해 이 XML 파일을 참조하여 SQL 쿼리를 실행합니다. -->
+<!-- MyBatis 매퍼 파일에 대한 DTD(Document Type Definition) 선언입니다.
+이 DTD는 XML 구조를 정의하고, MyBatis가 올바른 형식의 XML을 사용하는지 검사하는 데 사용됩니다. -->
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- mapper 엘리먼트는 MyBatis 매퍼의 최상위 엘리먼트입니다.
+  namespace 속성은 이 매퍼가 어떤 인터페이스와 연결되는지 지정합니다. -->
 <mapper namespace="city.dao.CityMapper">
+<!-- select 엘리먼트는 데이터베이스에서 데이터를 조회하는 SQL 쿼리를 정의합니다.
+
+id: 매퍼 내에서 각각의 쿼리를 구분하는 유일한 식별자입니다.
+parameterType: 쿼리에 전달되는 매개변수의 자료형을 지정합니다. 여기서는 map으로 지정했으며, Java 코드에서 HashMap으로 전달될 것입니다.
+resultType: 쿼리의 결과로 반환되는 자료형을 지정합니다. 여기서는 map으로 지정했으며, 각 도시에 대한 정보가 HashMap으로 반환될 것입니다.
+SQL 쿼리: SELECT name FROM city WHERE countrycode = #{countrycode}는
+도시 테이블에서 countrycode가 주어진 값과 일치하는 도시의 이름을 조회합니다. -->
   <select id="selectCity" parameterType="map" resultType="map">
     SELECT name
 	FROM city
