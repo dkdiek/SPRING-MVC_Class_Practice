@@ -22,4 +22,5 @@ SQL 쿼리: SELECT name FROM city WHERE countrycode = #{countrycode}는
 	FROM city
 	WHERE countrycode = #{countrycode}
   </select>
+  <update id=""></update>
 </mapper>
